@@ -36,7 +36,17 @@ function CurrentWeather({responseData}) {
             <p>Wind Speed</p>
           </div>
         </div>
+        
       )}
+                <div className="sunriseset">
+              <p id="sun">Sunrise</p>
+              {responseData.sys &&  
+              <p id="sun">{new Date(responseData.sys.sunrise * 1000).toLocaleTimeString('en-GB')}</p>}
+              <p id="sun">Sunset</p>
+              {responseData.sys && 
+              <p id="sun">{new Date(responseData.sys.sunset * 1000).toLocaleTimeString('en-GB')}</p>}
+              
+          </div>
     </div>
   </div>
   </div>
