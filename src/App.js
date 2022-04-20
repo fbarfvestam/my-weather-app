@@ -13,7 +13,7 @@ function App() {
       navigator.geolocation.getCurrentPosition((position) => {
         const lat = position.coords.latitude;
         const long = position.coords.longitude;
-        let finalAPIEndPoint = `${API_endpoint}lat=${lat}&lon=${long}&appid=${API_key}`;
+        let finalAPIEndPoint = `${API_endpoint}lat=${lat}&lon=${long}&units=metric&appid=${API_key}`;
         getWeatherByPosition(finalAPIEndPoint);
       });
     } else {
