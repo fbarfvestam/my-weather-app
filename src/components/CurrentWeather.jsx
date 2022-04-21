@@ -1,37 +1,40 @@
 function CurrentWeather({responseData}) {
+
+ //try to get cityname and not continent
+  
   return (
     <div className="app">
     <div className="container">
       <div className="top">
         <div className="location">
-          <p>{responseData.name}</p>
+          <p>{responseData.timezone}</p>
         </div>
         <div className="temp">
-          {responseData.main ? <h1>{responseData.main.temp.toFixed()}°C</h1> : null}
+          {responseData.current ? <h1>{responseData.current.temp.toFixed()}°C</h1> : null}
         </div>
         <div className="description">
             <div>
-            {responseData.weather &&
-        <p>{responseData.weather[0].main}</p>
+            {responseData.current &&
+        <p>{responseData.current.weather[0].main}</p>
         }
         </div>
-          {responseData.weather && <img src={`http://openweathermap.org/img/wn/${responseData.weather[0].icon}@2x.png`}></img>}
+          {responseData.current && <img src={`http://openweathermap.org/img/wn/${responseData.current.weather[0].icon}@2x.png`}></img>}
           </div>
-      {responseData.name != undefined && (
+      {responseData.timezone != undefined && (
         <div className="bottom">
           <div className="feels">
-            {responseData.main ? (
-              <p className="bold">{responseData.main.feels_like.toFixed()}°C</p>
+            {responseData.current ? (
+              <p className="bold">{responseData.current.feels_like.toFixed()}°C</p>
             ) : null}
             <p>Feels like</p>
           </div>
           <div className="humidity">
-            {responseData.main ? <p className="bold">{responseData.main.humidity}%</p> : null}
+            {responseData.current ? <p className="bold">{responseData.current.humidity}%</p> : null}
             <p>Humidity</p>
           </div>
           <div className="wind">
-            {responseData.wind ? (
-              <p className="bold">{responseData.wind.speed.toFixed()} M/S</p>
+            {responseData.current ? (
+              <p className="bold">{responseData.current.wind_speed.toFixed()} M/S</p>
             ) : null}
             <p>Wind Speed</p>
           </div>
@@ -39,13 +42,21 @@ function CurrentWeather({responseData}) {
         
       )}
                 <div className="sunriseset">
-              <p id="sun">Sunrise</p>
-              {responseData.sys &&  
-              <p id="sun">{new Date(responseData.sys.sunrise * 1000).toLocaleTimeString('en-GB')}</p>}
-              <p id="sun">Sunset</p>
-              {responseData.sys && 
-              <p id="sun">{new Date(responseData.sys.sunset * 1000).toLocaleTimeString('en-GB')}</p>}
+              <p id="sun">Sunrise at</p>
+              {responseData.current &&  
+              <p id="sun">{new Date(responseData.current.sunrise * 1000).toLocaleTimeString('en-GB')}</p>}
+              <p id="sun">Sunset at</p>
+              {responseData.current && 
+              <p id="sun">{new Date(responseData.current.sunset * 1000).toLocaleTimeString('en-GB')}</p>}
               
+          </div>
+          <div className="hourly">
+            {responseData.hourly && (
+              <p>{ new Date (responseData.hourly[0].temp * 1000).toLocaleTimeString('en-GB')}</p>
+
+
+            )}
+                <p></p>
           </div>
     </div>
   </div>

@@ -3,7 +3,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import CurrentWeather from "./components/CurrentWeather";
 
-const API_endpoint = `https://api.openweathermap.org/data/2.5/weather?`;
+const API_endpoint = `https://api.openweathermap.org/data/2.5/onecall?`;
 const API_key = process.env.REACT_APP_WEATHER_API_KEY;
 
 function App() {
