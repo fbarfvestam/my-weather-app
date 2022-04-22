@@ -33,13 +33,11 @@ function App() {
     getPosition();
   }, []);
   // triggered when responsedata is changed
-  useEffect(() => {
-    console.log(responseData);
-  }, [responseData]);
+  useEffect(() => {}, [responseData]);
 
   return (
     <div className="App">
-      <CurrentWeather responseData={responseData} />
+      {responseData ? <CurrentWeather responseData={responseData} /> : null}
     </div>
   );
 }

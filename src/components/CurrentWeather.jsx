@@ -1,7 +1,37 @@
+import React, { useEffect, useState } from "react"
+import { map } from "rxjs/operators"
+
 function CurrentWeather({responseData}) {
 
- //try to get cityname and not continent
+
+ const [hourlyData, sethourlyData] = useState([]) 
+ const [response, setResponse] = useState([])
+
+  useEffect(() => {
+    if(responseData) {
+      setResponse(responseData.hourly)
+    }
+    
+    
+  },[])
   
+
+  useEffect(() => {
+    if(response) {
+      let test = []
+      //console.log(response);
+       response.map((item, index) => {
+        if(index % 3 === 0 && test.length < 5) {
+          test.push(item)
+        }
+      })
+     // console.log(test);
+      sethourlyData(test)
+    }
+  },[response])
+
+  console.log(hourlyData);
+
   return (
     <div className="app">
     <div className="container">
@@ -52,7 +82,7 @@ function CurrentWeather({responseData}) {
           </div>
           <div className="hourly">
             {responseData.hourly && (
-              <p>{ new Date (responseData.hourly[0].temp * 1000).toLocaleTimeString('en-GB')}</p>
+              <><p>{new Date(responseData.hourly[0].dt * 1000).toLocaleTimeString('en-GB')}</p><p>{responseData.hourly[0].temp.toFixed()}</p></>
 
 
             )}
@@ -64,7 +94,7 @@ function CurrentWeather({responseData}) {
   
 )}
 
- {/* {responseData.weather[0].main}  */}
+
 
 
 export default CurrentWeather
