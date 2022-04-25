@@ -5,9 +5,9 @@ function DailyWeather({responseData}) {
         let daily = []
         responseData.daily.forEach((item, index) => {
           if(daily.length < 5) {
-            daily.push(<div key={index}><p>{new Date(item.dt * 1000).toLocaleDateString('en-GB', {month: '2-digit', day: '2-digit'})}</p>
+            daily.push(<div key={index}><p className="time">{new Date(item.dt * 1000).toLocaleDateString('en-GB', {month: '2-digit', day: '2-digit'})}</p>
             <img src={`http://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`}></img>
-            <p>{item.temp.day.toFixed()}°C</p></div>)
+            <p>{item.temp.day.toFixed()}°</p></div>)
           } 
         })
         return daily
@@ -16,7 +16,6 @@ function DailyWeather({responseData}) {
 
   return (
     <div className="hourly">
-   
    {responseData.daily && renderDaily()}
     </div>
   )

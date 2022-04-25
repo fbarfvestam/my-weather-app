@@ -28,6 +28,7 @@ function App() {
       console.log("error");
     }
   }
+
   // runs on init
   useEffect(() => {
     getPosition();

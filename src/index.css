@@ -99,8 +99,11 @@ h1 {
   background-color: rgba(255, 255, 255, 0.398);
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 565px) {
   .app {
-    height: 200vh;
+    height: 230vh;
     }
+  .time {
+    margin-top: 2rem;
+  }
  }

@@ -4,19 +4,21 @@ import DailyWeather from "./DailyWeather"
 
 function CurrentWeather({responseData}) {
 
+  function handleChange() {
+
+  }
 
   function renderHourly() {
     let hourly = []
     responseData.hourly.forEach((item, index) => {
       if(index % 3 === 0 && hourly.length < 5) {
-        hourly.push(<div key={index}><p>{new Date(item.dt * 1000).toLocaleTimeString('en-GB',{ hour: '2-digit', minute: '2-digit' })}</p>
+        hourly.push(<div key={index}><p className="time">{new Date(item.dt * 1000).toLocaleTimeString('en-GB',{ hour: '2-digit', minute: '2-digit' })}</p>
         <img src={`http://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`}></img>
-        <p>{item.temp.toFixed()}°C</p></div>)
+        <p>{item.temp.toFixed()}°</p></div>)
       } 
     })
     return hourly
   }
-
 
   return (
     <div className="app">
@@ -26,7 +28,7 @@ function CurrentWeather({responseData}) {
           <p>{responseData.timezone}</p>
         </div>
         <div className="temp">
-          {responseData.current ? <h1>{responseData.current.temp.toFixed()}°C</h1> : null}
+          {responseData.current ? <h1>{responseData.current.temp.toFixed()}°</h1> : null}
         </div>
         <div className="description">
             <div>
@@ -36,11 +38,12 @@ function CurrentWeather({responseData}) {
         </div>
           {responseData.current && <img src={`http://openweathermap.org/img/wn/${responseData.current.weather[0].icon}@2x.png`}></img>}
           </div>
+          <button onChange={handleChange}>Change units</button>
       {responseData.timezone != undefined && (
         <div className="bottom">
           <div className="feels">
             {responseData.current ? (
-              <p className="bold">{responseData.current.feels_like.toFixed()}°C</p>
+              <p className="bold">{responseData.current.feels_like.toFixed()}°</p>
             ) : null}
             <p>Feels like</p>
           </div>
