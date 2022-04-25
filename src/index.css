@@ -107,6 +107,7 @@ h1 {
 .hourly {
   display: flex;
   justify-content: space-evenly;
+  flex-wrap: wrap;
   text-align: center;
   width: 100%;
   margin: 1rem auto;

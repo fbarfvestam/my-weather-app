@@ -4,33 +4,18 @@ import { map } from "rxjs/operators"
 function CurrentWeather({responseData}) {
 
 
- const [hourlyData, sethourlyData] = useState([]) 
- const [response, setResponse] = useState([])
+  function renderHourly() {
+    let hourly = []
+    responseData.hourly.forEach((item, index) => {
+      if(index % 3 === 0 && hourly.length < 5) {
+        hourly.push(<div key={index}><p>{new Date(item.dt * 1000).toLocaleTimeString('en-GB')}</p>
+        <img src={`http://openweathermap.org/img/wn/${responseData.current.weather[0].icon}@2x.png`}></img>
+        <p>{item.temp.toFixed()}°C</p></div>)
+      } 
+    })
+    return hourly
+  }
 
-  useEffect(() => {
-    if(responseData) {
-      setResponse(responseData.hourly)
-    }
-    
-    
-  },[])
-  
-
-  useEffect(() => {
-    if(response) {
-      let test = []
-      //console.log(response);
-       response.map((item, index) => {
-        if(index % 3 === 0 && test.length < 5) {
-          test.push(item)
-        }
-      })
-     // console.log(test);
-      sethourlyData(test)
-    }
-  },[response])
-
-  console.log(hourlyData);
 
   return (
     <div className="app">
@@ -81,12 +66,7 @@ function CurrentWeather({responseData}) {
               
           </div>
           <div className="hourly">
-            {responseData.hourly && (
-              <><p>{new Date(responseData.hourly[0].dt * 1000).toLocaleTimeString('en-GB')}</p><p>{responseData.hourly[0].temp.toFixed()}</p></>
-
-
-            )}
-                <p></p>
+            {responseData.hourly && renderHourly()}
           </div>
     </div>
   </div>

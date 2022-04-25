@@ -7,7 +7,7 @@ const API_endpoint = `https://api.openweathermap.org/data/2.5/onecall?`;
 const API_key = process.env.REACT_APP_WEATHER_API_KEY;
 
 function App() {
-  const [responseData, setResponseData] = useState({});
+  const [responseData, setResponseData] = useState(null);
   async function getPosition() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
@@ -37,7 +37,7 @@ function App() {
 
   return (
     <div className="App">
-      {responseData ? <CurrentWeather responseData={responseData} /> : null}
+      {responseData && <CurrentWeather responseData={responseData} />}
     </div>
   );
 }
