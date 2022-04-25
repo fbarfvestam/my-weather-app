@@ -10,7 +10,7 @@ function CurrentWeather({responseData}) {
     responseData.hourly.forEach((item, index) => {
       if(index % 3 === 0 && hourly.length < 5) {
         hourly.push(<div key={index}><p>{new Date(item.dt * 1000).toLocaleTimeString('en-GB',{ hour: '2-digit', minute: '2-digit' })}</p>
-        <img src={`http://openweathermap.org/img/wn/${responseData.current.weather[0].icon}@2x.png`}></img>
+        <img src={`http://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`}></img>
         <p>{item.temp.toFixed()}°C</p></div>)
       } 
     })
@@ -58,10 +58,10 @@ function CurrentWeather({responseData}) {
         
       )}
                 <div className="sunriseset">
-              <p id="sun">Sunrise at</p>
+              <p id="sun">Sunrise:</p>
               {responseData.current &&  
               <p id="sun">{new Date(responseData.current.sunrise * 1000).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })}</p>}
-              <p id="sun">Sunset at</p>
+              <p id="sun">Sunset:</p>
               {responseData.current && 
               <p id="sun">{new Date(responseData.current.sunset * 1000).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })}</p>}
               
