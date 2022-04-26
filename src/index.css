@@ -14,6 +14,15 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.App button {
+  padding: .7rem 1.5rem;
+  font-size: 1.2rem;
+  border-radius: 25px;
+  border: 1px solid rgba(255,255,255, 0.8);
+  background: rgba(255,255,255, 0.1);
+  color: #f8f8f8;
+}
+
 p {
   font-size: 1.3rem;
 }
@@ -24,10 +33,11 @@ h1 {
 
 .app {
   width: 100%;
-  height: 100vh;
+  height: 200vh;
   position: relative;
   background-color: rgba(0,0,0,0.4);
   color: #fff;
+  overflow: auto;
 }
 
 .app::before {
@@ -99,11 +109,19 @@ h1 {
   background-color: rgba(255, 255, 255, 0.398);
 }
 
-@media screen and (max-width: 565px) {
+@media screen and (max-width: 563px) {
+  body {
+    overflow: auto;
+  }
   .app {
-    height: 230vh;
-    }
+    height: 250vh;
+    bottom: auto;
+  }
   .time {
     margin-top: 2rem;
+  }
+
+  .container {
+    top: 5%;
   }
  }
