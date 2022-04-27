@@ -10,6 +10,7 @@ function CurrentWeather({responseData, imperial, metric}) {
       if(index % 3 === 0 && hourly.length < 5) {
         hourly.push(<div key={index}><p className="time">{new Date(item.dt * 1000).toLocaleTimeString('en-GB',{ hour: '2-digit', minute: '2-digit' })}</p>
         <img src={`http://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`}></img>
+        <p className="mainweather">{item.weather[0].main}</p>
         <p>{item.temp.toFixed()}°</p></div>)
       } 
     })
@@ -57,7 +58,7 @@ function CurrentWeather({responseData, imperial, metric}) {
         </div>
         
       )}
-                <div className="sunriseset">
+          <div className="sunriseset">
               <p id="sun">Sunrise:</p>
               {responseData.current &&  
               <p id="sun">{new Date(responseData.current.sunrise * 1000).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })}</p>}
@@ -70,12 +71,9 @@ function CurrentWeather({responseData, imperial, metric}) {
             {responseData.hourly && renderHourly()}
           </div>
     </div>
-    {responseData && <DailyWeather responseData={responseData} />}
-    <div className="push">
-      
+        {responseData && <DailyWeather responseData={responseData} />}
     </div>
   </div>
- </div>
   
 )}
 

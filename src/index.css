@@ -21,6 +21,14 @@ body {
   border: 1px solid rgba(255,255,255, 0.8);
   background: rgba(255,255,255, 0.1);
   color: #f8f8f8;
+  cursor: pointer;
+  margin: 1rem;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  text-align: center;
 }
 
 p {
@@ -102,22 +110,29 @@ h1 {
   flex-wrap: wrap;
   text-align: center;
   width: 100%;
-  margin-bottom: 3rem;
+  margin: 1rem auto;
   padding: 1rem;
   border-radius: 12px;
   background-color: rgba(255, 255, 255, 0.398);
 }
 
-.buttons {
+.daily {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
   text-align: center;
+  width: 100%;
+  margin-bottom: 5rem;
+  padding: 1rem;
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.398);
 }
 
-button {
-  cursor: pointer;
-  margin: 1rem;
+.mainweather {
+  margin-bottom: 1rem;
+  font-size: 1rem;
 }
+
 
 @media screen and (max-width: 563px) {
   body {
@@ -135,7 +150,7 @@ button {
     top: 5%;
   }
 
-  button {
+  .App button {
     margin: 0.5rem;
   }
  }
