@@ -1,3 +1,8 @@
+# React Weather App
+Built with JS/ React /HTML/ CSS and API: https://openweathermap.org/api
+Deployed version: https://lively-chebakia-b9de99.netlify.app
+P.S you need to allow location in your browser in order for the app to display data.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
