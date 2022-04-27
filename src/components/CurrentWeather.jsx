@@ -71,6 +71,9 @@ function CurrentWeather({responseData, imperial, metric}) {
           </div>
     </div>
     {responseData && <DailyWeather responseData={responseData} />}
+    <div className="push">
+      
+    </div>
   </div>
  </div>
   
