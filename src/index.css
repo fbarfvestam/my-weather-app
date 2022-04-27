@@ -109,6 +109,16 @@ h1 {
   background-color: rgba(255, 255, 255, 0.398);
 }
 
+.buttons {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+button {
+  cursor: pointer;
+}
+
 @media screen and (max-width: 563px) {
   body {
     overflow: auto;
@@ -125,3 +135,4 @@ h1 {
     top: 5%;
   }
  }
+

@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react"
-import { map } from "rxjs/operators"
 import DailyWeather from "./DailyWeather"
-import { imperial, metric } from "../App"
 
-function CurrentWeather({responseData}) {
+
+function CurrentWeather({responseData, imperial, metric}) {
 
   function renderHourly() {
     let hourly = []
@@ -35,6 +34,8 @@ function CurrentWeather({responseData}) {
         </div>
           {responseData.current && <img src={`http://openweathermap.org/img/wn/${responseData.current.weather[0].icon}@2x.png`}></img>}
           </div>
+          <button onClick={metric}>Change to Celsius</button>
+        <button onClick={imperial}>Change to Fahrenheit</button>
       {responseData.timezone != undefined && (
         <div className="bottom">
           <div className="feels">
@@ -71,7 +72,7 @@ function CurrentWeather({responseData}) {
     </div>
     {responseData && <DailyWeather responseData={responseData} />}
   </div>
-</div>
+ </div>
   
 )}
 

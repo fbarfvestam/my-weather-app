@@ -11,11 +11,9 @@ function App() {
   let [units, setUnits] = useState("metric");
   const imperial = (e) => {
     setUnits("imperial");
-    getPosition();
   };
   const metric = (e) => {
     setUnits("metric");
-    getPosition();
   };
   async function getPosition() {
     if (navigator.geolocation) {
@@ -45,9 +43,13 @@ function App() {
 
   return (
     <div className="App">
-      <button onClick={metric}>Change to Celsius</button>
-      <button onClick={imperial}>Change to Fahrenheit</button>
-      {responseData && <CurrentWeather responseData={responseData} />}
+      {responseData && (
+        <CurrentWeather
+          metric={metric}
+          imperial={imperial}
+          responseData={responseData}
+        />
+      )}
     </div>
   );
 }
